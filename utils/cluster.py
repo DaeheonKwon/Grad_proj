@@ -7,9 +7,6 @@ class cluster:
     def __init__(self, dataframe):
         self.dataframe = dataframe
         self.dataframe['cdr3_aa_len'] = self.dataframe['cdr3_aa'].apply(lambda x: len(x))
-        self.v_call = self.dataframe['v_call']
-        self.j_call = self.dataframe['j_call']
-        self.c_call = self.dataframe['c_call']
         self.trim_alleles()
         self.grouped_dataframe = self.dataframe.groupby(['v_call', 'j_call', 'cdr3_aa_len'])
         self.grouped_dataframe = list(self.grouped_dataframe)
@@ -21,21 +18,9 @@ class cluster:
         return grouped_hamming_distance_map    
 
     def trim_alleles(self) -> object:
-        for i in range(len(self.v_call)):
-            for j in range(len(self.v_call[i])):
-                if self.v_call[i][j] == '*':
-                    self.v_call[i] = self.v_call[i][:j]
-                    break
-        for i in range(len(self.j_call)):
-            for j in range(len(self.j_call[i])):
-                if self.j_call[i][j] == '*':
-                    self.j_call[i] = self.j_call[i][:j]
-                    break
-        for i in range(len(self.c_call)):
-            for j in range(len(self.c_call[i])):
-                if self.c_call[i][j] == '*':
-                    self.c_call[i] = self.c_call[i][:j]
-                    break
+        self.dataframe['v_call'] = self.dataframe['v_call'].apply(lambda x: x.split('*')[0])
+        self.dataframe['j_call'] = self.dataframe['j_call'].apply(lambda x: x.split('*')[0])
+        self.dataframe['c_call'] = self.dataframe['c_call'].apply(lambda x: x.split('*')[0])
 
     def search_adjacency(self, grouped_dataframe_subgroup):
         sequence = grouped_dataframe_subgroup[1]['cdr3_aa']

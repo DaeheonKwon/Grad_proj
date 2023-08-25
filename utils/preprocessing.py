@@ -15,4 +15,4 @@ class preprocessing:
     def trim_alleles(self) -> object:
         self.dataframe['v_call'] = self.dataframe['v_call'].apply(lambda x: x.split('*')[0])
         self.dataframe['j_call'] = self.dataframe['j_call'].apply(lambda x: x.split('*')[0])
-        self.dataframe['c_call'] = self.dataframe['cdr3_aa'].apply(lambda x: x.split('*')[0])
+        self.dataframe['c_call'] = self.dataframe['c_call'].apply(lambda x: x.split('*')[0])

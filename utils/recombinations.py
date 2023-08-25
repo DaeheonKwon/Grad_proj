@@ -5,9 +5,6 @@ from itertools import combinations
 class recombinations:
     def __init__(self, dataframe):
         self.dataframe = dataframe
-        self.v_call = self.dataframe['v_call']
-        self.j_call = self.dataframe['j_call']
-        self.c_call = self.dataframe['c_call']
         self.trim_alleles()
 
     def __call__(self):
@@ -29,21 +26,9 @@ class recombinations:
         return recombination_types
 
     def trim_alleles(self) -> object:
-        for i in range(len(self.v_call)):
-            for j in range(len(self.v_call[i])):
-                if self.v_call[i][j] == '*':
-                    self.v_call[i] = self.v_call[i][:j]
-                    break
-        for i in range(len(self.j_call)):
-            for j in range(len(self.j_call[i])):
-                if self.j_call[i][j] == '*':
-                    self.j_call[i] = self.j_call[i][:j]
-                    break
-        for i in range(len(self.c_call)):
-            for j in range(len(self.c_call[i])):
-                if self.c_call[i][j] == '*':
-                    self.c_call[i] = self.c_call[i][:j]
-                    break
+        self.dataframe['v_call'] = self.dataframe['v_call'].apply(lambda x: x.split('*')[0])
+        self.dataframe['j_call'] = self.dataframe['j_call'].apply(lambda x: x.split('*')[0])
+        self.dataframe['c_call'] = self.dataframe['c_call'].apply(lambda x: x.split('*')[0])
 
     def check_for_CSR(self):
         clones = self.dataframe.groupby(['v_call', 'j_call', 'cdr3_aa'])
