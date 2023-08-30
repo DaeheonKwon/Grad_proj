@@ -5,7 +5,7 @@ from collections import defaultdict
 class preprocessing:
 
     def __init__(self, dataframe):
-        self.dataframe = dataframe
+        self.dataframe = dataframe.copy()
         self.trim_alleles()
         self.grouped_dataframe = self.dataframe.groupby(['v_call', 'j_call', 'cdr3_aa'])
 

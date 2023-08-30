@@ -4,7 +4,7 @@ from itertools import combinations
 
 class recombinations:
     def __init__(self, dataframe):
-        self.dataframe = dataframe
+        self.dataframe = dataframe.copy()
         self.trim_alleles()
 
     def __call__(self):
