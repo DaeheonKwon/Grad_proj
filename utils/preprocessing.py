@@ -25,6 +25,5 @@ class preprocessing:
     def get_mature(self):
         mature = self.dataframe[self.dataframe['v_alignment_mutation'] >= 2]
         # consider cases that c_call is other than M/D, but SHM is under 2
-
-
         return mature
+
