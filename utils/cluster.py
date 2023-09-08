@@ -51,13 +51,14 @@ class cluster:
             for seq, neighbors in distance_map[i].items():
                 G.add_node(seq)
                 for neighbor in neighbors:
+                    G.add_node(neighbor)
                     G.add_edge(seq, neighbor)
         return G
 
     def draw_graph(self):
         G = self.create_graph()
         layout = nx.spring_layout(G)
-        nx.draw(G, layout, with_labels = False, node_size = 1, node_color = 'skyblue', edge_color = 'black', font_size = 1)
+        nx.draw(G, layout, with_labels=False, node_size=1, node_color='skyblue', edge_color='black', font_size=1)
         plt.show()
 
     def clonal_expansion_index_by_edges(self):
