@@ -5,6 +5,7 @@ import community
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 class cluster:
 
     def __init__(self, dataframe):
@@ -59,7 +60,6 @@ class cluster:
         G = self.create_graph()
         layout = nx.spring_layout(G)
         nx.draw(G, layout, with_labels=False, node_size=1, node_color='skyblue', edge_color='black', font_size=1)
-        plt.show()
 
     def clonal_expansion_index_by_edges(self):
         G = self.create_graph()
@@ -103,7 +103,7 @@ class cluster:
         cluster_size.sort()
 
         total_size = sum(cluster_size)
-        proportions = [size/total_size for size in cluster_size]
+        proportions = [size / total_size for size in cluster_size]
         shannon_entropy = -sum([p * np.log2(p) for p in proportions])
 
         return cluster_size, shannon_entropy

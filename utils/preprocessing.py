@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from collections import defaultdict
 
 
@@ -17,6 +18,7 @@ class preprocessing:
         self.dataframe['v_call'] = self.dataframe['v_call'].apply(lambda x: x.split('*')[0])
         self.dataframe['j_call'] = self.dataframe['j_call'].apply(lambda x: x.split('*')[0])
         self.dataframe['c_call'] = self.dataframe['c_call'].apply(lambda x: x.split('*')[0])
+
     def get_naive(self):
         naive = self.dataframe[self.dataframe['v_alignment_mutation'] < 2]
         naive = naive[naive['c_call'].isin(['IGHM', 'IGHD'])]
@@ -34,6 +36,7 @@ class preprocessing:
         c_counts = self.get_mature()['c_call'].value_counts()
 
         return v_counts, j_counts, c_counts
+
     def get_naive_usage(self):
         v_counts = self.get_naive()['v_call'].value_counts()
         j_counts = self.get_naive()['j_call'].value_counts()
