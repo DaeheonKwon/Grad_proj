@@ -1,0 +1,39 @@
+```{r}
+library(alakazam)
+library(dplyr)
+library(ggplot2)
+library(shazam)
+```
+
+```{r}
+list.files('../Data/IgPhyML_input/sjogren')
+```
+
+```{r}
+for (file in list.files('../Data/IgPhyML_input/sjogren')){
+data <- read.table(file.path('../Data/IgPhyML_input/sjogren/', file), header=TRUE, sep = '\t')
+dist_ham <- distToNearest(data %>% filter(v_call == "IGHV1-69"), model='ham', normalize='len', nproc=1)
+# Find threshold using gmm method
+output <- findThreshold(dist_ham$dist_nearest, method="gmm", model="gamma-gamma")
+# Plot distance histogram, Gaussian fits, and optimum threshold
+plot(output, binwidth=0.02, title="GMM Method: gamma-gamma")
+print(output)
+print(file)
+}
+
+```
+
+```{r}
+for (file in list.files('../Data/IgPhyML_input/sjogren')){
+data <- read.table(file.path('../Data/IgPhyML_input/sjogren/', file), header=TRUE, sep = '\t')
+dist_ham <- distToNearest(data %>% filter(v_call == "IGHV1-69"), model='ham', normalize='len', nproc=1)
+p1 <- ggplot(subset(dist_ham, !is.na(dist_nearest)), 
+             aes(x=dist_nearest)) + 
+        geom_histogram(color="white", binwidth=0.005) +
+        labs(x = "Hamming distance", y = "Count") +
+        scale_x_continuous(breaks=seq(0, 1, 0.05)) +
+        theme_bw()
+plot(p1)
+print(file)
+}
+```

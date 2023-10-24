@@ -30,6 +30,9 @@ class preprocessing:
         mature_2 = mature_2[~mature_2['c_call'].isin(['IGHM', 'IGHD'])]
         return pd.concat([mature_1, mature_2])
 
+    def get_Vgene(self, Vgene):
+        return self.dataframe[self.dataframe['v_call'] == Vgene]
+
     def get_mature_usage(self):
         v_counts = self.get_mature()['v_call'].value_counts()
         j_counts = self.get_mature()['j_call'].value_counts()

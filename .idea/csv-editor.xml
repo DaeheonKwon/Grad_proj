@@ -3,7 +3,28 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="/.Rproj.user/shared/notebooks/B707737B-Lineage Analysis/1/s/csco4o9lp3gr4/000011.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/.Rproj.user/shared/notebooks/B707737B-Lineage Analysis/1/s/cvbh54ml405qm/00000f.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../Data/221121_sjogren_exclude_all_healthy_convergent.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Data/PDB structures/cdr2_perfect_match/cdr2_perfect_match_with_antigen.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
