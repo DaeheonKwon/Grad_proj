@@ -17,13 +17,6 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../Data/221121_sjogren_exclude_all_healthy_convergent.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/../Data/PDB structures/cdr2_perfect_match/cdr2_perfect_match_with_antigen.csv">
           <value>
             <Attribute>
